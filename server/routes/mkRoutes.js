@@ -36,6 +36,29 @@ router.get('/add-to-cart/:id', function(req, res, next){
     })
 })
 
+router.get('/korpa-plus/:id', function(req,res, next){
+    let jeloId = req.params.id
+
+    jelovnik.findById(jeloId, function(err, jelo){
+        req.session.cart.items[jeloId].qty++
+        req.session.cart.items[jeloId].price = req.session.cart.items[jeloId].qty * jelo.price
+        req.session.cart.totalPrice += jelo.price
+        res.redirect('/korpa')
+    })
+})
+
+
+router.get('/korpa-minus/:id', function(req,res, next){
+    let jeloId = req.params.id
+
+    jelovnik.findById(jeloId, function(err, jelo){
+        req.session.cart.items[jeloId].qty--
+        req.session.cart.items[jeloId].price = req.session.cart.items[jeloId].qty * jelo.price
+        req.session.cart.totalPrice -= jelo.price
+        res.redirect('/korpa')
+    })
+})
+
 router.get('/remove-from-cart/:id', function(req, res, next){
     let jeloId = req.params.id
 
@@ -50,32 +73,6 @@ router.get('/remove-from-cart/:id', function(req, res, next){
     res.redirect('/korpa')
 })
 
-
-router.get('/korpa-plus/:id', function(req,res, next){
-    let jeloId = req.params.id
-
-    let novaKolicina = req.session.cart.items[jeloId].qty++;
-    let novaCena = req.session.cart.items[jeloId].price += req.session.cart.items[jeloId].price / novaKolicina
-    console.log(`Nova cena je ${novaCena}`);
-    req.session.cart.totalPrice += novaCena
-    // console.log(req.session.cart)
-    console.log(`Nova totalna cena je ${req.session.cart.totalPrice}`);
-
-    res.redirect('/korpa')
-})
-
-router.get('/korpa-minus/:id', function(req,res, next){
-    let jeloId = req.params.id
-
-    let novaKolicina = req.session.cart.items[jeloId].qty--;
-    let novaCena = req.session.cart.items[jeloId].price -= req.session.cart.items[jeloId].price / novaKolicina
-    console.log(`Nova cena je ${novaCena}`);
-    req.session.cart.totalPrice -= novaCena
-    console.log(`Nova cena je ${req.session.cart.totalPrice}`);
-    // console.log(req.session.cart)
-    res.redirect('/korpa')
-})
-
 router.get('/korpa', function(req, res, next){
 
     try{
@@ -83,6 +80,7 @@ router.get('/korpa', function(req, res, next){
             return res.render('korpa', {products:null, totalPrice: 0})
         }
         let cart = new Cart(req.session.cart ? req.session.cart : {})
+        
             return res.render('korpa', {products: cart.generateArray(), totalPrice: cart.totalPrice, title:'Moja Kuhinja - korpa '})
     }catch(error){
         res.status(500).send( {message:error.message || "Nastala je greska!"})
