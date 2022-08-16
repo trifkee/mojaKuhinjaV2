@@ -1,0 +1,94 @@
+<head>
+    <link rel="stylesheet" href="/css/menu.css">
+</head>
+
+<div class="wrapper">
+
+    <header>
+        <div class="header-main">
+            <h1>
+                <%= currentCategory %>
+            </h1>
+            <div class="header-paragraf">
+                <p> <span>|</span> Sta danas jedes?</p>
+                <ion-icon name="pizza-outline"></ion-icon>
+
+            </div>
+        </div>
+
+        <div class="header-sortiranje">
+            <div class="header-toggle sortiranje-ikona">
+                <p>Sortiraj hranu</p>
+                <ion-icon name="funnel-outline"></ion-icon>
+            </div>
+
+            <div class="sortiranje-nacin">
+
+                <div title="Sortiraj po : Vreme Pripreme" class="sortiranje sortiranje-popularno">
+                    <p>Vreme pripreme</p>
+                    <ion-icon name="alarm-outline"></ion-icon>
+                </div>
+
+                <div title="Sortiraj po : Abecedno" class="sortiranje sortiranje-ime">
+                    <p>Abecedno</p>
+                    <ion-icon name="text-outline"></ion-icon>
+                </div>
+
+                <div title="Sortiraj po : Kalorijski" class=" sortiranje sortiranje-kalorije">
+                    <p>Kalorijski</p>
+                    <ion-icon name="flame-outline"></ion-icon>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <% if(typeof kategorijaPoId !=='undefined' && kategorijaPoId.length> 0) { %>
+            <% kategorijaPoId.forEach(function(jelovnik, index){ %>
+                <a href="/meni/<%= jelovnik.category%>/<%= jelovnik._id %>">
+                    <article class="meni-jelo jelo1">
+                        <div class="jelo-img" style="background-image:url('/img/jelaSlike/<%= jelovnik.image %>')">
+                            <!-- <img src="/img/jelaSlike/<%= jelovnik.image %>" alt=""> -->
+                            <h1 class="jelo-naziv">
+                                <%= jelovnik.name %>
+                            </h1>
+
+                            <p class="jelo-cena">
+                                <%- jelovnik.price %> <span>RSD</span>
+                            </p>
+                        </div>
+
+                        <div class="jelo-dugmad">
+                            <div class=" blur2 jelo-dugme dugme1 ">
+                                <p>vise o jelu</p>
+                                <ion-icon name="information-circle-outline"></ion-icon>
+                            </div>
+                            <!-- <a href='#' class=" blur2 jelo-dugme dugme2">
+                                <p>dodaj u korpu</p>
+                                <ion-icon name="bag-add-outline"></ion-icon>
+                            </a> -->
+                        </div>
+                    </article>
+                </a>
+                <% }) %>
+                    <% } %>
+
+    </main>
+</div>
+
+<script>
+    const nav = document.querySelector('nav');
+    const navToggle = document.querySelector('.toggle');
+    navToggle.onclick = function () {
+        nav.classList.toggle('active')
+    }
+
+    const filter = document.querySelector('.header-sortiranje');
+    const filterToggle = document.querySelector('.header-toggle');
+    filterToggle.onclick = function () {
+        filter.classList.toggle('active')
+    }
+
+</script>

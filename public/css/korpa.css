@@ -1,0 +1,578 @@
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	font-family: var(--poppins);
+}
+
+:root {
+	--senka: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+	--senka2: rgba(0, 0, 0, 0.2) 0px 3px 10px, rgba(0, 0, 0, 0.15) 0px 3px 10px;
+	/* VELICINE */
+	--nav-duzina: 10vh;
+	--naslov: 1.3em;
+	--paragraf: 1em;
+	--ivice: .8em 2em;
+	--margina: .5em;
+	/* BOJE */
+	--zelena: #8ab17d;
+	--zuta: #fccf47;
+	--plava: #2a9d8f;
+	--ljubicasta: #264653;
+	--ljubicasta2: #a010ff;
+	--crvena: #e76f51;
+	--narandza: #f4a462;
+	--pink: #f5bda3;
+	--bela: rgb(238, 238, 238);
+	/* FONT */
+	--poppins: "Poppins";
+	--rufina: "Rufina";
+}
+
+img {
+	max-width: 100px;
+}
+
+a {
+	text-decoration: none;
+	color: var(--bela);
+}
+
+li {
+	list-style-type: none;
+}
+
+body,
+html {
+	overflow-x: hidden;
+}
+
+body {
+	position: relative;
+	width: 100%;
+	min-height: 100vh;
+	background-size: 10em;
+	background-color: var(--ljubicasta2);
+	/* background-image: url(/img/image/pattern/patternbg.png); */
+	/* background-image: linear-gradient(315deg, #ffffff 0%, #e2e2e2 74%); */
+}
+
+nav {
+	display: none;
+}
+
+ion-icon {
+	cursor: pointer;
+}
+/* ------------------------ */
+/* @supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+	.blur {
+		background-color: rgba(65, 64, 14, 0.6);
+		-webkit-backdrop-filter: blur(.8em);
+		backdrop-filter: blur(.8em);
+	}
+} */
+/* ---- */
+
+.wrapper {
+	width: 90%;
+	margin: 1em auto;
+	background-color: var(--bela);
+	border-radius: 1em;
+	filter: drop-shadow(0 0 2px rgba(0, 0, 0, .5));
+}
+
+main {
+	padding: .5em 0;
+}
+
+.header {
+	display: flex;
+	flex-direction: row;
+	padding: 1em;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.header-ikone {
+	font-size: 1.5em;
+	display: flex;
+	justify-content: space-around;
+	gap: 1em;
+}
+
+.header-ikona {
+	color: black;
+	padding: .2em;
+	display: flex;
+	justify-self: center;
+	/* background-color: red; */
+	cursor: pointer;
+	transition: .2s;
+}
+
+.header-ikona:hover {
+	transform: scale(1.2);
+	color: var(--ljubicasta2);
+}
+
+.header-naslov {
+	display: flex;
+	align-items: center;
+	font-size: 1em;
+}
+
+.korpa-content {
+	width: 90%;
+	margin: .8em auto;
+	border-radius: .5em;
+	/* padding: 1em; */
+	background-color: var(--bela);
+	display: flex;
+	overflow: hidden;
+	min-height: 16em;
+	filter: drop-shadow(0 0 2px rgba(0, 0, 0, .5));
+}
+
+.korpa-item {
+	background-color: var(--ljubicasta2);
+	color: white;
+	display: flex;
+	flex-direction: column;
+	gap: .5em;
+	width: 100%;
+}
+
+.item-img {
+	height: 60%;
+	width: 100%;
+	background-image: url(/img/images/hrana.jpg);
+	background-size: cover;
+	background-position: center;
+	padding: .8em;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.item-img ion-icon {
+	filter: drop-shadow(0 0 2px rgba(0, 0, 0, .5));
+	filter: invert(1);
+	font-size: 1.5em;
+}
+
+.item-tekst {
+	padding: .3em;
+	width: 90%;
+	margin: 0 auto;
+}
+
+.item-tekst h1 {
+	font-size: 1.7em;
+}
+
+.item-tekst p {
+	font-size: 1.2em;
+}
+.item-tekst-info {
+	display: flex;
+	justify-content: space-between;
+}
+
+.brisi-jelo{
+	background-color: white;
+	width: min-content;
+	border-radius: 50em;
+	padding: .5em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* color:white; */
+	position: relative;
+	z-index: 1;
+	filter: drop-shadow(0 0 2px rgba(0, 0, 0, .5));
+	transition: all .2s ease-in;
+}
+.brisi-jelo:nth-child(1):hover::after {
+	background-color: var(--zelena);
+}
+
+.brisi-jelo:nth-child(2):hover::after {
+	background-color: var(--ljubicasta2);
+}
+
+.brisi-jelo:hover::after {
+	font-weight: 400;
+	font-size: 1.2em;
+	transition-delay: .2s;
+	z-index: 999;
+	content: attr(data-tooltip);
+	position: absolute;
+	background-color: var(--crvena);
+	filter: drop-shadow(0 0 2px rgba(0, 0, 0, .5));
+	width: max-content;
+	left: 3em;
+	border-radius: .5em;
+	padding: .5em 1em;
+}
+
+.brisi-jelo a ion-icon{
+	color: white;
+}
+
+/* -- */
+.korpa-meni-podeljen {
+	display: flex;
+	justify-content: space-between;
+}
+
+.korpa-zavrsi {
+	overflow: hidden;
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	background-color: var(--ljubicasta2);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	display: flex;
+	margin: 0;
+	/* padding: .5em; */
+	/* border-radius: .8em; */
+}
+
+.korpa-zavrsi-info {
+	max-width: 100%;
+}
+
+.zavrsi-img {
+	display: none;
+	overflow: hidden;
+	width: 70%;
+	background-repeat: no-repeat;
+	border-radius: .8em;
+	background-size: cover;
+	background-position: center;
+	/* background-color: red; */
+	background-image: url(/img/images/forma-img3.jpg);
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.korpa-zavrsi.active {
+	overflow: visible;
+	left: 50%;
+	transform: translate(-50%);
+	width: 100%;
+	height: 100vh;
+}
+
+/* -- */
+.zavrsi-meni {
+	color: white;
+	display: none;
+	padding: .5em 1em;
+	/* background-color: red; */
+}
+
+.zavrsi-meni p {
+	color: black;
+	font-size: 1.1em;
+}
+
+.zavrsi-header {
+	display: flex;
+	flex-direction: column;
+	align-items: right;
+	gap: 1em;
+	filter: drop-shadow(0 0 2px rgba(0, 0, 0, .3));
+	color: var(--bela);
+}
+.zavrsi-heade h1 {
+	font-family: var(--rufina);
+}
+
+.zavrsi-header p {
+	margin-top: -1em;
+	filter: drop-shadow(0 0 2px rgba(0, 0, 0, .2));
+	color: var(--bela);
+	font-size: 1em;
+	width: 20ch;
+}
+
+.zavrsi-header p::before {
+	display: none;
+	content: ' ';
+	border-right: 2px solid var(--bela);
+	margin-right: .5em;
+}
+
+.korpa-zavrsi.active .zavrsi-meni {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 100%;
+	/* display: block; */
+}
+
+.zavrsi-forma {
+	/* background-color: red; */
+	padding: 1em 0;
+	margin-top: -2em;
+	display: flex;
+	flex-direction: column;
+	gap: .8em;
+}
+
+.forma {
+	padding: .2em;
+	/* margin: 0 auto; */
+	display: flex;
+	flex-direction: column;
+	/* width: 80%; */
+}
+
+label {
+	color: var(--bela);
+	font-size: 1em;
+	/* margin-bottom: -.5em; */
+}
+
+input {
+	padding: .8em 1em;
+	min-width: 25%;
+	border: none;
+	outline: none;
+	border-radius: .2em;
+}
+
+input:focus {
+	outline: 4px solid var(--narandza);
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+	-moz-appearance: textfield;
+}
+/* - */
+
+.zavrsi-tekst {
+	margin-left: -.6em;
+	/* background-color: red; */
+	display: flex;
+	/* color: var(--bela); */
+	flex-direction: column;
+}
+
+.zavrsi-tekst p {
+	/* width: 5ch; */
+	font-size: 1em;
+	color: var(--bela);
+}
+
+.zavrsi-button {
+	display: flex;
+	filter: drop-shadow(0 0 2px rgba(0, 0, 0, .3));
+	font-size: 1em;
+	justify-content: center;
+	color: black;
+	/* justify-self: center; */
+	/* align-content: center; */
+	background-color: var(--bela);
+	width: 60%;
+	padding: .8em;
+	outline: none;
+	border: none;
+	font-weight: bold;
+	border-radius: .5em;
+}
+
+.zavrsi-button p {
+	color: black;
+	font-size: 1em;
+}
+
+.zavrsi-button ion-icon {
+	display: flex;
+	justify-self: center;
+	justify-content: center;
+	align-content: center;
+	font-size: 1em;
+	padding: .3em;
+}
+/* -- */
+.zavrsi-ikona {
+	cursor: pointer;
+	font-size: 1.5em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: .5em;
+	transition: .2s;
+	background-color: var(--ljubicasta2);
+	padding: .5em;
+	border-radius: .5em;
+	color: var(--bela);
+}
+
+.zavrsi-ikona p {
+	font-weight: bold;
+	font-size: .7em;
+}
+
+.korpa-zavrsi.active .zavrsi-ikona {
+	background-color: var(--bela);
+	color: black;
+}
+
+.korpa-zavrsi.active .toggle p {
+	display: none;
+}
+
+.korpa-zavrsi.active .zavrsi-ikona {
+	width: 2em;
+	position: absolute;
+	bottom: 5%;
+	right: 3%;
+	transform: rotate(180deg);
+	/* font-size: 1em; */
+	filter: drop-shadow(0 0 2px rgba(0, 0, 0, .3));
+}
+
+.korpa-meni-podeljen {
+	display: flex;
+}
+
+/* -- */
+
+@media (min-width: 500px) {
+	.zavrsi-img {
+		aspect-ratio: 1/1;
+		display: block;
+		/* width: 50%; */
+	}
+
+	.zavrsi-forma {
+		width: 100%;
+		/* padding: 0; */
+	}
+
+	.korpa-zavrsi {
+		padding: .5em;
+	}
+}
+
+@media (min-width: 720px) {
+	.wrapper {
+		min-height: 95vh;
+		justify-self: center;
+		justify-content: center;
+	}
+
+	.korpa-items {
+		place-content: center;
+		/* background-color: red; */
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: .5em;
+		padding: 1em;
+	}
+
+	.zavrsi-header h1 {
+		font-size: 3em;
+	}
+
+	.zavrsi-header p {
+		font-size: 1.5em;
+	}
+
+	.zavrsi-forma {
+		display: flex;
+		/* grid-template-columns: repeat(2, 1fr); */
+	}
+
+	.forma input {
+		padding: 1em 1em;
+	}
+
+	/* .forma {
+		width: 100%;
+	} */
+
+	.zavrsi-tekst p {
+		font-size: 1.5em;
+	}
+
+	.zavrsi-ikona {
+		font-size: 2em;
+	}
+
+	.zavrsi-tekst ion-icon {
+		font-size: 2em;
+	}
+
+	.header {
+		margin: 0 auto;
+		width: 95%;
+		font-size: 1.2em;
+	}
+
+	.zavrsi-header p {
+		width: 30ch;
+		font-size: 1.2em;
+	}
+
+	.zavrsi-button {
+		display: flex;
+		justify-self: center;
+		align-items: center;
+		text-align: center;
+		width: 100%;
+		padding: .2em 1em;
+	}
+}
+
+@media (min-width: 1000px) {
+	.korpa-items {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+@media (min-width: 1500px) {
+	.korpa-items {
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	label {
+		font-size: 1.5em;
+	}
+
+	.forma input {
+		width: 100%;
+		padding: 3em 1em;
+		border-radius: 1em;
+	}
+
+	.zavrsi-header p {
+		width: 100%;
+		font-size: 1.7em;
+	}
+
+	.zavrsi-img {
+		width: 40%;
+		/* display: none; */
+	}
+
+	.korpa-zavrsi-info {
+		width: 100%;
+	}
+	.zavrsi-header {
+		font-size: 2em;
+	}
+	.zavrsi-button {
+		font-size: 2em;
+	}
+}

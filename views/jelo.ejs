@@ -1,0 +1,80 @@
+<head>
+    <link rel="stylesheet" href="/css/jelo.css">
+</head>
+
+<div class="wrapper">
+    <% if(jelo !=null) { %>
+
+        <main class="blur2">
+            <a href="/meni/<%= jelo.category %>" class="jelo-nazad">
+                <div>
+                    <ion-icon name="close-circle"></ion-icon>
+                </div>
+            </a>
+
+            <div class="jelo-slika" style="background-image: url('/img/jelaSlike/<%= jelo.image %>');">
+                <a href="/add-to-cart/<%= jelo._id %>">
+                    <div class="jelo-dugme blur2">
+                        <ion-icon name="cart-outline"></ion-icon>
+                        <p>dodaj u korpu</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="jelo-info">
+                <div class="jelo-header">
+                    <div style="display: flex;gap: -4em; align-items: right; flex-direction: column;">
+
+                        <h1 class="jelo-naziv">
+                            <%= jelo.name %>
+                        </h1>
+
+                        <h1 class="jelo-naziv" style="font-weight: 400; font-size: 1em;margin-top: -1em;">
+                            <%= jelo.price %> RSD / KOM
+                        </h1>
+                    </div>
+
+                    <div class="jelo-dodatan-info">
+                        <div class=" brojke jelo-kalorije-broj">
+                            <ion-icon name="flame"></ion-icon>
+                            <p>
+                                <%= jelo.calories%> <span>kcal</span>
+                            </p>
+                        </div>
+                        <div class=" brojke jelo-vreme-broj">
+                            <ion-icon name="alarm"></ion-icon>
+                            <p>
+                                <%= jelo.time %> <span>min</span>
+                            </p>
+                        </div>
+                        <div class="brojke jelo-kolicina-broj">
+                            <ion-icon name="person"></ion-icon>
+                            <p>
+                                <%= jelo.peoples %> <span>osobe</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="jelo-nacin-pripreme">
+                    <p>
+                        <%= jelo.description %>
+                    </p>
+                </div>
+                <!-- <button onclick="obrisiJelo()">obrisi</button> -->
+            </div>
+        </main>
+
+        <% } %>
+</div>
+
+
+<script>
+    const nav = document.querySelector('nav');
+    const navToggle = document.querySelector('.toggle');
+    navToggle.onclick = function () {
+        nav.classList.toggle('active')
+    }
+
+
+</script>

@@ -1,0 +1,124 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	overflow: hidden;
+	background-image: url(./img/pattern/patternbg.png);
+	font-size: 2em;
+	text-align: center;
+}
+
+/*  */
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	font-family: var(--poppins);
+	/* overflow-x: hidden; */
+}
+
+:root {
+	--senka: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+	--senka2: rgba(0, 0, 0, 0.2) 0px 3px 10px, rgba(0, 0, 0, 0.15) 0px 3px 10px;
+	/* VELICINE */
+	--nav-duzina: 10vh;
+	--naslov: 1.3em;
+	--paragraf: 1em;
+	--ivice: .8em 2em;
+	--margina: .5em;
+	/* BOJE */
+	--zelena: #8ab17d;
+	--zuta: #fcdd81;
+	--plava: #2a9d8f;
+	--ljubicasta: #264653;
+	--ljubicasta2: #a010ff;
+	--crvena: #e76f51;
+	--narandza: #f4a261;
+	--pink: #f5bda3;
+	--bela: rgb(238, 238, 238);
+	/* FONT */
+	--poppins: "Poppins";
+	--rufina: "Rufina";
+}
+nav {
+	display: none;
+}
+
+body,
+html {
+	overflow-x: hidden;
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	height: 100vh;
+}
+
+img {
+	max-width: 20em;
+}
+
+li {
+	list-style-type: none;
+}
+/*  */
+.wrapper {
+	gap: .2em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.tekst {
+	font-size: .5em;
+}
+
+.tekst h1 span {
+	font-weight: normal;
+}
+
+.Btn {
+	text-decoration: none;
+	/* border-radius: 25px 0; */
+	font-size: .5em;
+	/* background-color: var(--pink); */
+	color: white;
+	padding: .5em 1em;
+	transition: .2s ease;
+}
+
+.Btn a {
+	border-radius: 25px 0;
+	transition: .2s ease;
+}
+
+.hmBtn {
+	background-color: var(--plava);
+	padding: .5em 1em;
+	color: white;
+	text-decoration: none;
+}
+
+.jBtn {
+	color: white;
+	text-decoration: none;
+	background-color: var(--ljubicasta2);
+	padding: .5em 1em;
+}
+.jBtn:hover {
+	background-color: var(--pink);
+	color: black;
+}
+
+.hmBtn:hover {
+	background-color: var(--ljubicasta);
+}
+
+@media (min-width: 600px) {
+	.wrapper {
+		font-size: 1.2em;
+	}
+}

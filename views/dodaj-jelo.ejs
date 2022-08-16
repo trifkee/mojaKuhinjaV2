@@ -1,0 +1,81 @@
+<head>
+    <link rel="stylesheet" href="/css/dodaj-jelo.css">
+</head>
+
+<div class="forma">
+    <h1 class="forma-naslov">Dodaj jelo na meni</h1>
+
+    <% if(infoSubmitObj !='' ){ %>
+        <div class="poruka poruka-uspesna">
+            <p>:)</p>
+            <%= infoSubmitObj %>
+        </div>
+        <% }%>
+
+            <% if(infoErrorsObj !='' ){ %>
+                <div class="poruka poruka-greska">
+                    <p>:(</p>
+                    <%= infoErrorObj[0].message %>
+                </div>
+                <% }%>
+
+                    <div class="forma-main">
+
+                        <form action="/dodaj-jelo" enctype="multipart/form-data" method="post">
+                            <div class="forma-inputi">
+
+                                <div class="forma-input">
+                                    <label for="category">Kategorija</label>
+                                    <select name="category" id="category">
+                                        <option selected disabled>Izaberi kategoriju</option>
+                                        <option value="dorucak">Dorucak</option>
+                                        <option value="rucak">Rucak</option>
+                                        <option value="vecera">Vecera</option>
+                                        <option value="uzina">Uzina</option>
+                                    </select>
+                                </div>
+
+                                <div class="forma-input">
+                                    <label for="name">Naziv jela</label>
+                                    <input type="text" name="name" id="name" required>
+                                </div>
+
+                                <div class="forma-input">
+                                    <label for="calories">Kalorije</label>
+                                    <input type="number" min="0" name="calories" id="calories" required>
+                                </div>
+
+                                <div class="forma-input">
+                                    <label for="time">Vreme spremanja</label>
+                                    <input type="number" min="0" name="time" id="time" required>
+                                </div>
+
+                                <div class="forma-input">
+                                    <label for="peoples">Kolicina / ljudi</label>
+                                    <input type="number" min="1" name="peoples" id="peoples" required>
+                                </div>
+
+                                <div class="forma-input">
+                                    <label for="price">Cena</label>
+                                    <input type="number" min="0" name="price" id="price" required>
+                                </div>
+
+                                <div class="forma-input opis">
+                                    <label for="description">Opis jela</label>
+                                    <textarea name="description" id="description" cols="10" rows="5"
+                                        required></textarea>
+                                </div>
+
+                                <div class="forma-input slika">
+                                    <label for="image">Slika</label>
+                                    <input type="file" name="image" accept="image/" required>
+                                </div>
+                                <!-- <input type="submit"> -->
+                                <button type="submit" id="dodajJeloBtn" style="font-weight: bold;">Dodaj jelo
+                                    <span style="font-weight:normal ;">😋</span>
+                                </button>
+                            </div>
+                        </form>
+
+                    </div>
+</div>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- FAVICON -->
+    <link rel="icon" href="/public/img/favicon.ico">
+    <!-- FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600;800&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital@0;1&family=Rufina:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- ----------------------------------------------------- -->
+    <title>
+        <%= typeof title !='undefined' ? title:'Moja Kuhinja' %>
+    </title>
+</head>
+
+<body>
+    <nav>
+        <div class="logo">
+            <h1> <a href="/" class="logo-link">Moja <span class="logo-span"> Kuhinjica</span> </a></h1>
+            <div class="toggle">
+                <ion-icon name="grid-outline" class="ikona-otvori"></ion-icon>
+                <ion-icon name="grid" class="ikona-zatvori"></ion-icon>
+            </div>
+        </div>
+        <div class="nav-content">
+
+            <ul class="navigacija">
+                <a href="/meni/dorucak">
+                    <li class="navigacija-item item1">Doručak</li>
+                </a>
+                <a href="/meni/rucak">
+                    <li class="navigacija-item item2"> Ručak</li>
+                </a>
+                <a href="/meni/vecera">
+                    <li class="navigacija-item item3">Večera</li>
+                </a>
+                <a href="/meni/uzina">
+                    <li class="navigacija-item item4">Užina</li>
+                </a>
+            </ul>
+
+            <a href="/korpa" class="navigacija-item cart">
+                <ion-icon name="cart-outline" style="aspect-ratio: 1 / 1;"></ion-icon>
+                <% if(session.cart) { %>
+                    <span class="qtyBubble" style="font-weight: 400;aspect-ratio: 1 / 1;">
+                        <%= session.cart.totalQty %>
+                    </span>
+                    <% } %>
+            </a>
+        </div>
+
+    </nav>
+
+    <%- body -%>
+
+        <script src="./js/funkcije.js"></script>
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

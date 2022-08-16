@@ -1,0 +1,96 @@
+<head>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<!-- MAIN SEKCIJA -->
+<div class="wrapper">
+    <main>
+        <a href="/dodaj-jelo" class="dodaJeloBtn">Dodaj Jelo</a>
+
+        <article class="sekcija sekcija1 blur">
+
+            <div class="sekcija-header">
+                <h1>Šta jesti?</h1>
+                <p>Pogledaj šta nudimo i poruči!</p>
+            </div>
+
+            <div class="sekcija-menu">
+
+                <a href="/meni/dorucak">
+                    <div class="sekcija-menu-item menu-item1">Doručak</div>
+                </a>
+
+                <a href="/meni/rucak">
+                    <div class="sekcija-menu-item menu-item2">Ručak</div>
+                </a>
+
+                <a href="/meni/vecera">
+                    <div class="sekcija-menu-item menu-item3">Večera</div>
+                </a>
+
+                <a href="/meni/uzina">
+                    <div class="sekcija-menu-item menu-item4">Dezert</div>
+                </a>
+
+            </div>
+            <img src="/img/icons/burger.png" alt="burger-meni">
+        </article>
+        <% if(jelo !='' ) { %>
+            <% jelo.latest.forEach(function(jelovnik, index){%>
+                <article class="sekcija sekcija2 blur">
+
+                    <div class="sekcija-header">
+                        <h1>Novo<ion-icon name="heart"></ion-icon>
+                        </h1>
+                        <p>Najnovije na meniju!</p>
+                        <!-- <p>Mi preporucujemo</p> -->
+                    </div>
+
+                    <a href="/meni/<%= kategorija%>/<%= jelovnik._id %>">
+                        <article class="meni-jelo jelo">
+                            <div class="jelo-img"
+                                style="background-image: url('/img/jelaSlike/<%= jelovnik.image %>');">
+                                <h1 class="jelo-naziv">
+                                    <%= jelovnik.name %>
+                                </h1>
+                            </div>
+                        </article>
+                    </a>
+
+                    <img src="/img/icons/vatra.png" alt="random-meal">
+
+                </article>
+                <% }) %>
+                    <% } %>
+                        <a href="/korpa" class="sekcija sekcija3 blur">
+                            <article>
+
+                                <div class="sekcija-header">
+                                    <h1>Dovrši kupovinu</h1>
+                                    <p>Poruči hranu i uživaj!</p>
+                                </div>
+                                <img src="/img/icons/korpa.png" alt="cart-btn">
+
+                            </article>
+                        </a>
+
+                        <article class="sekcija sekcija4 blur">
+
+                            <div class="sekcija-header">
+                                <h1>Nadji nas</h1>
+                                <p>Na društvenim mrežama!</p>
+                            </div>
+
+                            <div class="sekcija4-socials">
+                                <a href="#"> <i class="fab fa-facebook-square"></i></a>
+                                <a href="#"> <i class="fab fa-twitter"></i> </a>
+                                <a href="#"> <i class="fab fa-instagram"></i></a>
+                            </div>
+
+                            <img src="/img/icons/komenatari.png" alt="socials">
+
+                        </article>
+    </main>
+
+
+</div>

@@ -1,0 +1,138 @@
+<head>
+    <link rel="stylesheet" href="/css/korpa.css">
+</head>
+
+<div class="wrapper">
+    <main>
+        <div class="header">
+
+            <h1>Račun</h1>
+
+            <div class="header-ikone">
+                <a href="/" class="header-ikona">
+                    <ion-icon name="home-outline"></ion-icon>
+                </a>
+
+            </div>
+        </div>
+        <!-- -- -->
+        <div class="korpa-items">
+
+            <% if(products !=null){ %>
+                <% for(let jela of Object.values(session.cart.items)) {%>
+                    <div class="korpa-content">
+                        <div class="korpa-item">
+                            <div class="item-img" style="background-image: url('/img/jelaSlike/<%= jela.image %>');">
+                                <div class="korpa-alatke"
+                                    style="display: flex; flex-direction: column; font-size: .8em; gap: .5em;">
+                                    <a href="/korpa-plus/<%= jela.id %>" data-tooltip="+1" class="brisi-jelo">
+                                        <ion-icon name="add-circle-outline"></ion-icon>
+                                    </a>
+                                    <% if(jela.qty> 1){ %>
+                                        <a href="/korpa-minus/<%= jela.id %>" data-tooltip="-1"
+                                            class="brisi-jelo brisi-jelo-desno">
+                                            <ion-icon name="remove-circle-outline"></ion-icon>
+                                        </a>
+                                        <% } %>
+
+
+                                </div>
+                                <a data-tooltip="Obrisi iz korpe" class="brisi-jelo"
+                                    href="/remove-from-cart/<%= jela.id %>">
+                                    <ion-icon name="trash-outline"></ion-icon>
+                                </a>
+                            </div>
+                            <div class="item-tekst">
+                                <h1 id="name" style="font-size: 1.5em; text-overflow: ellipsis;
+                            white-space: nowrap;
+                            overflow: hidden; ">
+                                    <%= jela.item %>
+                                </h1>
+                                <div class="item-tekst-info">
+                                    <p id="qty">Komada: <span>
+                                            <%= jela.qty%>
+                                        </span></p>
+                                    <p> <span id="price">
+                                            <%= parseInt(jela.price) %>
+                                        </span>
+                                        <span>RSD</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <% } %>
+                        <% } else {%>
+                            <h1 style="display:grid; place-content: center; height: 100%; width: 100%;">🛒Korpa je
+                                prazna
+                                😕</h1>
+                            <% } %>
+
+    </main>
+</div>
+
+
+<div class="korpa-meni-podeljen korpa-zavrsi">
+    <div class="korpa-zavrsi-info">
+
+        <% if(products !=null){ %>
+            <div class="zavrsi-ikona toggle">
+                <p>Račun</p>
+                <ion-icon name="chevron-up-outline"></ion-icon>
+            </div>
+            <% } %>
+
+                <div class="zavrsi-meni">
+                    <div class="zavrsi-header">
+                        <h1>Super!</h1>
+                        <p>Jos par koraka i tvoja narudzbina stize!</p>
+                    </div>
+
+                    <form action="/" method="post" class="zavrsi-forma">
+
+                        <div class="forma forma-ime">
+                            <label for="ime">Ime</label>
+                            <input type="text" id="ime" placeholder="Marko" required>
+                        </div>
+
+                        <div class="forma forma-adr">
+                            <label for="adresa">Adresa</label>
+                            <input type="text" id="adresa" placeholder="Hajduka Veljka bb" required>
+                        </div>
+
+                        <div class="forma forma-br">
+                            <label for="broj">Broj telefona</label>
+                            <input type="number" id="broj" min="0" placeholder="+381 1111 111" required>
+                        </div>
+
+                        <div class="zavrsi-tekst">
+                            <p>Total:
+                                <span>
+                                    <%= totalPrice %> RSD
+                                </span>
+                            </p>
+
+                            <button type="submit" style="cursor: pointer;" class="zavrsi-button">
+                                <p class="zavrsi-paragraf">naruci</p>
+                                <ion-icon name="chevron-forward-outline"></ion-icon>
+                            </button>
+
+                        </div>
+
+                    </form>
+
+
+                </div>
+    </div>
+    <div class="zavrsi-img">
+
+    </div>
+</div>
+
+<script>
+    const korpa = document.querySelector('.korpa-zavrsi');
+    const korpaToggle = document.querySelector('.zavrsi-ikona');
+    korpaToggle.onclick = function () {
+        korpa.classList.toggle('active')
+    }
+</script>
